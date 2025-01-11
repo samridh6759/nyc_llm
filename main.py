@@ -59,7 +59,7 @@ def get_perplexity_response(qs):
         "frequency_penalty": 1
     }
     headers = {
-        "Authorization": f"Bearer {st.secrets['PERPLEXITY_API_KEY']}",
+        "Authorization": f"Bearer {st.secrets['PERPLEXITY_API_KEY']['PERPLEXITY_API_KEY']}",
         "Content-Type": "application/json"
     }
 
@@ -68,7 +68,8 @@ def get_perplexity_response(qs):
     return js
 
 def main():
-    client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
+    
+    client = OpenAI(api_key=st.secrets['OPENAI_API_KEY']['OPENAI_API_KEY'])
 
     st.title("NYC Real Estate LLM")
 
@@ -84,7 +85,7 @@ def main():
 
         st.write(answer)
 
-        elevenlabs_api_key = st.secrets['ELEVENLABS_API_KEY']
+        elevenlabs_api_key = st.secrets['ELEVENLABS_API_KEY']['ELEVENLABS_API_KEY']
         url = "https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb"
         headers = {
             "Accept": "audio/mpeg",
